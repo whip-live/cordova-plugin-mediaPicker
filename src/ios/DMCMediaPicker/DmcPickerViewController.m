@@ -191,7 +191,7 @@
     
     //获取相册
     PHFetchResult *smartAlbums = [PHAssetCollection       fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum
-                                                                                subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
+                                                                                subtype:PHAssetCollectionSubtypeAny options:nil];
     PHFetchResult *syncedAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum
                                                                            subtype:PHAssetCollectionSubtypeAlbumSyncedAlbum options:nil];
     PHFetchResult *userCollections = [PHCollectionList fetchTopLevelUserCollectionsWithOptions:nil];
@@ -207,7 +207,7 @@
         options.predicate = [NSPredicate predicateWithFormat:@"mediaType == %ld", PHAssetMediaTypeVideo];
     }
     
-    int defaultSelection, i = 0; //为了进入选择界面默认显示CameraRoll下的图片
+    int defaultSelection = 0, i = 0; //为了进入选择界面默认显示CameraRoll下的图片
 
     for (PHFetchResult *fetchResult in allAlbums) {
         for (PHAssetCollection *collection in fetchResult) {
